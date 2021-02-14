@@ -1,0 +1,8 @@
+- include_vars: abc.yml
+
+
+- name: Copy apache.conf.j2 files
+  template:
+     src: apache.conf.j2
+     dest: "{{ apache_conf }}"
+  notify: restart_apache

@@ -1,0 +1,19 @@
+
+- name: Install httpd
+  yum:
+    name: "{{ web_svc }}"
+    state: installed
+
+- name: Service Start
+  service:
+     name: "{{ web_svc }}"
+     state: started
+
+
+- name: Copy  index.html pages into 
+  copy:
+     src: website/
+     dest: "{{ web_root }}"
+
+- name: Import tasks 
+  import_tasks: apache-configure.yml
